@@ -9,17 +9,12 @@ export function CreatePost() {
 	const router = useRouter()
 	const [name, setName] = useState("")
 
-	const createPost = api.post.create.useMutation({
-		onSuccess: () => {
-			router.refresh()
+	const { mutate: createPost, isLoading } = api.post.create.useMutation({
+		onMutate: () => {
 			setName("")
 		},
-	})
-
-	const { mutate: createAPost } = api.post.create.useMutation({
 		onSuccess: () => {
 			router.refresh()
-			setName("")
 		},
 	})
 
@@ -27,8 +22,7 @@ export function CreatePost() {
 		<form
 			onSubmit={(e) => {
 				e.preventDefault()
-				// createPost.mutate({ name })
-				createAPost({ name })
+				createPost({ name })
 			}}
 			className="flex flex-col gap-2"
 		>
@@ -42,9 +36,9 @@ export function CreatePost() {
 			<button
 				type="submit"
 				className="rounded-full bg-white/10 px-10 py-3 font-semibold transition hover:bg-white/20"
-				disabled={createPost.isLoading}
+				disabled={isLoading}
 			>
-				{createPost.isLoading ? "Submitting..." : "Submit"}
+				{isLoading ? "Submitting..." : "Submit"}
 			</button>
 		</form>
 	)
