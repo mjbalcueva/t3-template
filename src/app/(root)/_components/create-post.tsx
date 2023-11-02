@@ -1,6 +1,5 @@
 "use client"
 
-import { useRouter } from "next/navigation"
 import { useState } from "react"
 
 import { type Post } from "@prisma/client"
@@ -8,15 +7,12 @@ import { type Post } from "@prisma/client"
 import { api } from "@/trpc/react"
 
 export function CreatePost() {
-	const router = useRouter()
 	const [name, setName] = useState("")
-
 	const utils = api.useUtils()
 
 	const { mutate: createPost, isLoading } = api.post.create.useMutation({
 		onMutate: async (newTodo) => {
 			await utils.post.getAll.cancel()
-
 			const previousPosts = utils.post.getAll.getData()
 			utils.post.getAll.setData(undefined, (prev) => {
 				const optimisticPost: Post = {
@@ -37,9 +33,6 @@ export function CreatePost() {
 			setName(newTodo.name)
 			if (!context) return
 			utils.post.getAll.setData(undefined, () => context.previousPosts)
-		},
-		onSuccess: () => {
-			router.refresh()
 		},
 		onSettled: async () => {
 			await utils.post.getAll.invalidate()

@@ -1,5 +1,6 @@
 import Link from "next/link"
 
+import { Button } from "@/components/ui/button"
 import { getServerAuthSession } from "@/server/auth"
 
 import { CreatePost } from "./_components/create-post"
@@ -10,11 +11,17 @@ export default async function Home() {
 
 	return (
 		<div>
-			<Link href={session ? "/api/auth/signout" : "/api/auth/signin"}>
-				{session ? "Sign out" : "Sign in"}
-			</Link>
-			<CreatePost />
-			<GetAllPosts />
+			<Button>
+				<Link href={session ? "/api/auth/signout" : "/api/auth/signin"}>
+					{session ? "Sign out" : "Sign in"}
+				</Link>
+			</Button>
+			{session && (
+				<>
+					<CreatePost />
+					<GetAllPosts />
+				</>
+			)}
 		</div>
 	)
 }

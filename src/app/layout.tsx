@@ -1,6 +1,7 @@
 import { headers } from "next/headers"
 
 import { GeistMono, GeistSans } from "geist/font"
+import { Toaster as ToastProvider } from "sonner"
 
 import "@/styles/globals.css"
 import { TRPCReactProvider } from "@/trpc/react"
@@ -22,7 +23,10 @@ export default function RootLayout({
 			className={`${GeistSans.variable} ${GeistMono.variable}`}
 		>
 			<body>
-				<TRPCReactProvider headers={headers()}>{children}</TRPCReactProvider>
+				<TRPCReactProvider headers={headers()}>
+					{children}
+					<ToastProvider richColors />
+				</TRPCReactProvider>
 			</body>
 		</html>
 	)
