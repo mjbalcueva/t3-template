@@ -10,12 +10,7 @@ const GetAllPosts = () => {
 	return (
 		<>
 			{posts!.map((post) => (
-				<div
-					key={post.id}
-					className="text-lg"
-				>
-					{post.name}
-				</div>
+				<div key={post.id}>{post.name}</div>
 			))}
 		</>
 	)
