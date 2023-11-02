@@ -1,6 +1,6 @@
-# Create T3 App
+# T3-Templates
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+This is a [T3 Stack](https://create.t3.gg/) project template bootstrapped with `create-t3-app`.
 
 ## What's next? How do I make an app with this?
 
@@ -13,6 +13,13 @@ If you are not familiar with the different technologies used in this project, pl
 - [Prisma](https://prisma.io)
 - [Tailwind CSS](https://tailwindcss.com)
 - [tRPC](https://trpc.io)
+
+With Additional
+
+- [Geist Font](https://vercel.com/font)
+- [Prettier Plugin Sort Imports](https://github.com/trivago/prettier-plugin-sort-imports)
+- [@shadcn/ui](https://ui.shadcn.com)
+- [Sonner](https://sonner.emilkowal.ski/getting-started)
 
 ## Learn More
 
