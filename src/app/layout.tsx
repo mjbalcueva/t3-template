@@ -1,4 +1,4 @@
-import { headers } from "next/headers"
+import { cookies } from "next/headers"
 
 import { GeistMono, GeistSans } from "geist/font"
 import { Toaster as ToastProvider } from "sonner"
@@ -23,7 +23,7 @@ export default function RootLayout({
 			className={`${GeistSans.variable} ${GeistMono.variable}`}
 		>
 			<body>
-				<TRPCReactProvider headers={headers()}>
+				<TRPCReactProvider cookies={cookies().toString()}>
 					<ToastProvider richColors />
 					{children}
 				</TRPCReactProvider>
